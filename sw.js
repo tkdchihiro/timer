@@ -1,5 +1,5 @@
 // 一度開けば電波なしでも動く。更新があれば裏で取り直し、次に開いたとき反映する
-const C='timer-v2', FILES=['./','index.html','manifest.webmanifest','icon.svg'];
+const C='timer-v3', FILES=['./','index.html','manifest.webmanifest','icon.svg'];
 self.addEventListener('install',e=>{ e.waitUntil(caches.open(C).then(c=>c.addAll(FILES).catch(()=>{}))); self.skipWaiting(); });
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==C).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{
